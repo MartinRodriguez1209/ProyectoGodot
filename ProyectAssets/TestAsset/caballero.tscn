@@ -1,21 +1,21 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Node2D.gd" type="Script" id=1]
-[ext_resource path="res://run1.png" type="Texture" id=2]
-[ext_resource path="res://run2.png" type="Texture" id=3]
-[ext_resource path="res://parado.png" type="Texture" id=4]
+[ext_resource path="res://parado.png" type="Texture" id=2]
+[ext_resource path="res://run1.png" type="Texture" id=3]
+[ext_resource path="res://run2.png" type="Texture" id=4]
 [ext_resource path="res://espada.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "lado",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "parado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "lado",
 "speed": 5.0
 } ]
 

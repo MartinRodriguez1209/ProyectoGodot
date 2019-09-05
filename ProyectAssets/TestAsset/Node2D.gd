@@ -48,10 +48,13 @@ func _physics_process(delta):
 	position.y = clamp(position.y,0,limit.y)
 	"""
 	if is_on_floor():
-		if Input.is_action_just_pressed("space"):
+		if Input.is_action_just_pressed("ui_up"):
 			mov.y += -velmax*5
 		if friction == true:
 			mov.x = lerp(mov.x, 0, 0.5)
+	if Input.is_action_just_pressed("space"):
+		$Node2D/espada/AnimationPlayer.play("golpe")
+	
 	
 	mov = move_and_slide(mov,UP)
 	

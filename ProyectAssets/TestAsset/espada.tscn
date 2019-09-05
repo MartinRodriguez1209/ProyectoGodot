@@ -4,7 +4,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "golpe"
-length = 0.3
+length = 0.22
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
@@ -12,10 +12,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 0.757858, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.204815 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 120.0 ]
+"values": [ 0.0, 120.0, 0.0 ]
 }
 
 [node name="Node2D" type="Node2D"]
@@ -26,6 +26,7 @@ position = Vector2( -0.0322571, 0.0279388 )
 gravity_vec = Vector2( 2, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="espada"]
+autoplay = "golpe"
 anims/golpe = SubResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="espada"]

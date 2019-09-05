@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://forest-road-preview.png" type="Texture" id=1]
 [ext_resource path="res://ladrillo.png" type="Texture" id=2]
 [ext_resource path="res://ogro.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ogro.gd" type="Script" id=4]
-[ext_resource path="res://bloques.tres" type="TileSet" id=5]
-[ext_resource path="res://caballero.tscn" type="PackedScene" id=6]
+[ext_resource path="res://bloques.tres" type="TileSet" id=4]
+[ext_resource path="res://caballero.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64.4697, 16.2394 )
@@ -131,20 +130,17 @@ shape = SubResource( 1 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 166.309, 71.8522 )
-script = ExtResource( 4 )
 
 [node name="KinematicBody2D2" parent="." instance=ExtResource( 3 )]
 position = Vector2( -156.997, -74.2793 )
-script = ExtResource( 4 )
 
 [node name="KinematicBody2D3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 527.799, -24.3704 )
-script = ExtResource( 4 )
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 5 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 393218, 0, 0, 393219, 0, 0, 393221, 0, 0, 393223, 0, 0, 393225, 0, 0, 393227, 0, 0, 1507360, 1, 0, 1572897, 3, 0, 1572900, 3, 0, 1638433, 3, 0, 1638436, 3, 0, 1703968, 1, 0, 1703969, 3, 0, 1703970, 5, 0, 1703971, 5, 0, 1703972, 3, 0, 1769505, 3, 0, 1769508, 3, 0, 1835037, 0, 0, 1835041, 3, 0, 1900577, 5, 0, 1900578, 5, 0, 1900579, 5, 0, 1900580, 5, 0, 1966107, 3, 0, 1966108, 6, 0, 2031628, 0, 0, 2031635, 0, 0, 2031642, 6, 0, 2031643, 3, 0, 2031644, 5, 0, 2031645, 5, 0, 2031646, 5, 0, 2031647, 5, 0, 2031648, 5, 0, 2031649, 5, 0, 2031650, 5, 0, 2031651, 5, 0, 2031652, 5, 0 )
 
-[node name="Caballero" parent="." instance=ExtResource( 6 )]
+[node name="Caballero" parent="." instance=ExtResource( 5 )]
