@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://espada.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "golpe"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 0.757858, 1 ),
+"update": 0,
+"values": [ 0.0, 120.0 ]
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 75.8889, 23.8329 )
+
+[node name="espada" type="Area2D" parent="."]
+position = Vector2( -0.0322571, 0.0279388 )
+gravity_vec = Vector2( 2, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="espada"]
+anims/golpe = SubResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="espada"]
+position = Vector2( -0.444946, -14.4465 )
+scale = Vector2( -1.34365, -1.39858 )
+polygon = PoolVector2Array( -3.05242, -6.97138, -3.2215, 6.10095, -0.566498, 8.39662, 2.354, 8.39662, 2.32582, -7.0718 )
+
+[node name="Sprite" type="Sprite" parent="espada"]
+position = Vector2( -0.0505066, -11.7277 )
+texture = ExtResource( 1 )
