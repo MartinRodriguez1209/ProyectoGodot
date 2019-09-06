@@ -132,10 +132,10 @@ shape = SubResource( 1 )
 position = Vector2( 166.309, 71.8522 )
 
 [node name="ogro2" parent="." instance=ExtResource( 3 )]
-position = Vector2( -156.997, -74.2793 )
+position = Vector2( 616.563, 201.741 )
 
 [node name="ogro3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 527.799, -24.3704 )
+position = Vector2( 257.053, 77.5988 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )

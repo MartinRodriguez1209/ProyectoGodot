@@ -10,7 +10,7 @@
 [ext_resource path="res://Sprites/ogro7.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/ogro8.png" type="Texture" id=9]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=1]
 resource_name = "dano"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.109804, 0.462745, 0.0666667, 1 ), Color( 1, 1, 1, 1 ), Color( 0.0431373, 0.513726, 0.117647, 1 ), Color( 1, 1, 1, 1 ), Color( 0.0431373, 0.513726, 0.117647, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "muerte"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -76,7 +76,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
@@ -89,10 +89,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 10, 13.6497 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 11.8327, 13.7737 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
@@ -100,12 +100,12 @@ position = Vector2( -3.39374, 1.86655 )
 script = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/dano = SubResource( 5 )
-anims/muerte = SubResource( 4 )
+anims/dano = SubResource( 1 )
+anims/muerte = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.378403, -3.5852 )
-frames = SubResource( 1 )
+frames = SubResource( 3 )
 animation = "muerto"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -120,7 +120,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( -0.620643, -0.00691223 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -130,5 +130,5 @@ position = Vector2( -0.131958, 0.065979 )
 
 [node name="Area_de_daño" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -0.90332, -0.128922 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

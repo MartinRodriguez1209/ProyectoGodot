@@ -81,8 +81,15 @@ func _physics_process(delta):
 	else:
 		pass
 	
-func dano(monto = 1):
+func dano(lado,monto = 1):
+	lado = position.x - lado
 	vida -= monto
+	if lado > 0:
+		mov.x = 400 
+		mov.y = -500 
+	else :
+		mov.x = -400 
+		mov.y = -500 
 	get_node("HUD/HUDCanvasLayer").actualizar(vida)
 	if vida == 0:
 		kill()
