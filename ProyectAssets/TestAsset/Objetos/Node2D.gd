@@ -37,7 +37,7 @@ func _physics_process(delta):
 			$espada/espada/Sprite.flip_h = false
 		
 		
-		if Input.is_action_pressed("ui_left"):
+		elif Input.is_action_pressed("ui_left"):
 			direc = -1
 			mov.x = -velmax
 			$espada/espada.position *= Vector2(-1,0)
@@ -47,11 +47,6 @@ func _physics_process(delta):
 			
 		
 		
-		elif Input.is_action_pressed("ui_down"):
-			mov.y += 1
-			$AnimatedSprite.flip_v=false
-			$AnimatedSprite.play("lado")
-			
 		
 		else:
 			$AnimatedSprite.play("parado")
