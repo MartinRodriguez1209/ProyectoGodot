@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Sprites/espada.png" type="Texture" id=1]
+[ext_resource path="res://Objetos/espada.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/espada.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "golpe"
@@ -19,7 +20,8 @@ tracks/0/keys = {
 }
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( 94.5625, 50.4481 )
+position = Vector2( 94.563, 50.448 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -39,4 +41,5 @@ polygon = PoolVector2Array( -3.05242, -6.97138, -3.2215, 6.10095, -0.566498, 8.3
 
 [node name="Sprite" type="Sprite" parent="espada"]
 position = Vector2( -0.0505066, -11.7277 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
+[connection signal="body_entered" from="espada" to="." method="_on_espada_body_entered"]

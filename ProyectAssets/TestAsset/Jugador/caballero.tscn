@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Objetos/Node2D.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/run1.png" type="Texture" id=2]
@@ -7,7 +7,87 @@
 [ext_resource path="res://Objetos/espada.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Jugador/HUDCanvasLayer.tscn" type="PackedScene" id=6]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="Animation" id=1]
+resource_name = "dano"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0434494, 0.0914217, 0.13031, 0.173202, 0.218872, 0.287499 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "muerto"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.227556 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("espada:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( -0.00817103, 0.00102138, 0.227634, 0.399488, 0.611049 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 7.21 ),
+"update": 0,
+"values": [ Vector2( 0.4, 0.636 ), Vector2( 2.67, 0.636 ), Vector2( 2.6724, 0.636347 ), Vector2( 50, 0.636 ), Vector2( 20, 0.636 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("espada:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( -0.021449, 0.22943, 0.793179 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 630.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.797697 ),
+"transitions": PoolRealArray( 1, 2.14355 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.964706, 0.180392, 0.180392, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("espada:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.00102138, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 0 ]
+}
+
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
@@ -20,27 +100,35 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 5.93906
 height = 2.32614
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 5.60123, 8.34087 )
 
 [node name="Caballero" type="KinematicBody2D"]
+position = Vector2( 560.745, 272.83 )
 script = ExtResource( 1 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/dano = SubResource( 1 )
+anims/muerto = SubResource( 5 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 401.36, 230.451 )
-frames = SubResource( 1 )
+position = Vector2( 0.0223751, -1.16764 )
+z_index = 1
+frames = SubResource( 2 )
 animation = "lado"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 401.264, 231.615 )
-shape = SubResource( 2 )
-
 [node name="espada" parent="." instance=ExtResource( 5 )]
-position = Vector2( 404.01, 232.255 )
+position = Vector2( 2.41778, 0.636 )
+scale = Vector2( 1, 1 )
+z_index = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.0735722, -0.00363731 )
+shape = SubResource( 3 )
 
 [node name="contador_invul" type="Timer" parent="."]
 wait_time = 0.8
@@ -51,5 +139,5 @@ one_shot = true
 [node name="Colision" type="Area2D" parent="."]
 
 [node name="Area_de_daño" type="CollisionShape2D" parent="Colision"]
-position = Vector2( 401.384, 231.587 )
-shape = SubResource( 3 )
+position = Vector2( 0.046423, -0.0316525 )
+shape = SubResource( 4 )

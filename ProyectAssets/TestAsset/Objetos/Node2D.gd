@@ -1,11 +1,14 @@
 extends KinematicBody2D
 
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 var mov = Vector2()
 var velmax = 300
 var limit
+var vivo = 1
+var knock = 50
 
 var vida = 3
 onready var tiempo_invulnerabilidad = $contador_invul
@@ -21,57 +24,68 @@ func _ready():
 func _physics_process(delta):
 	
 	
-	var friction = false
-	
-	mov.y += 100
-	if Input.is_action_pressed("ui_right"):
-		mov.x = velmax
-		$AnimatedSprite.flip_h = false
-		$AnimatedSprite.play("lado")
-	
-	if Input.is_action_pressed("ui_left"):
-		mov.x = -velmax
-		$AnimatedSprite.flip_h = true
-		$AnimatedSprite.play("lado")
-	
-	
-	elif Input.is_action_pressed("ui_down"):
-		mov.y += 1
-		$AnimatedSprite.flip_v=false
-		$AnimatedSprite.play("parado")
-	
+
+	if vivo == 1:
+		var friction = false
+		mov.y += 100
+		if Input.is_action_pressed("ui_right"):
+			mov.x = velmax
+			$AnimatedSprite.flip_h = false
+			$AnimatedSprite.play("lado")
+			$espada/espada/Sprite.flip_h = false
+		
+		
+		if Input.is_action_pressed("ui_left"):
+			mov.x = -velmax
+			$AnimatedSprite.flip_h = true
+			$AnimatedSprite.play("lado")
+			$espada/espada/Sprite.flip_h = true
+			
+		
+		
+		elif Input.is_action_pressed("ui_down"):
+			mov.y += 1
+			$AnimatedSprite.flip_v=false
+			$AnimatedSprite.play("parado")
+			
+		
+		else:
+			$AnimatedSprite.play("parado")
+			friction = true
+		
+		
+		
+		
+		"""
+		position += mov * delta
+		
+		position.x = clamp(position.x,0,limit.x)
+		position.y = clamp(position.y,0,limit.y)
+		"""
+		if is_on_floor():
+			if Input.is_action_just_pressed("ui_up"):
+				mov.y += -velmax*5
+			if friction == true:
+				mov.x = lerp(mov.x, 0, 0.5)
+		if Input.is_action_just_pressed("space"):
+			$espada/espada/AnimationPlayer.play("golpe")
+		
+		
+		mov = move_and_slide(mov,UP)
 	else:
-		$AnimatedSprite.play("parado")
-		friction = true
-	
-	
-	
-	
-	"""
-	position += mov * delta
-	
-	position.x = clamp(position.x,0,limit.x)
-	position.y = clamp(position.y,0,limit.y)
-	"""
-	if is_on_floor():
-		if Input.is_action_just_pressed("ui_up"):
-			mov.y += -velmax*5
-		if friction == true:
-			mov.x = lerp(mov.x, 0, 0.5)
-	if Input.is_action_just_pressed("space"):
-		$espada/espada/AnimationPlayer.play("golpe")
-	
-	
-	mov = move_and_slide(mov,UP)
+		pass
 	
 func dano(monto = 1):
 	vida -= monto
 	get_node("HUD/HUDCanvasLayer").actualizar(vida)
 	if vida == 0:
 		kill()
+	else:
+		$AnimationPlayer.play("dano")
 	
 func kill():
 	print("Game Over Man!")
+	vivo = 0
+	$AnimationPlayer.play("muerto")
 	
-	
-	
+
