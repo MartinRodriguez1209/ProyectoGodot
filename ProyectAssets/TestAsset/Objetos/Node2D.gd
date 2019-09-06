@@ -8,6 +8,7 @@ var mov = Vector2()
 var velmax = 300
 var limit
 var vivo = 1
+var direc
 var knock = 50
 
 var vida = 3
@@ -29,6 +30,7 @@ func _physics_process(delta):
 		var friction = false
 		mov.y += 100
 		if Input.is_action_pressed("ui_right"):
+			direc = 1
 			mov.x = velmax
 			$AnimatedSprite.flip_h = false
 			$AnimatedSprite.play("lado")
@@ -36,9 +38,11 @@ func _physics_process(delta):
 		
 		
 		if Input.is_action_pressed("ui_left"):
+			direc = -1
 			mov.x = -velmax
-			$AnimatedSprite.flip_h = true
+			$espada/espada.position *= Vector2(-1,0)
 			$AnimatedSprite.play("lado")
+			$AnimatedSprite.flip_h = true
 			$espada/espada/Sprite.flip_h = true
 			
 		
@@ -46,7 +50,7 @@ func _physics_process(delta):
 		elif Input.is_action_pressed("ui_down"):
 			mov.y += 1
 			$AnimatedSprite.flip_v=false
-			$AnimatedSprite.play("parado")
+			$AnimatedSprite.play("lado")
 			
 		
 		else:
@@ -68,8 +72,10 @@ func _physics_process(delta):
 			if friction == true:
 				mov.x = lerp(mov.x, 0, 0.5)
 		if Input.is_action_just_pressed("space"):
-			$espada/espada/AnimationPlayer.play("golpe")
-		
+			if direc == 1:
+				$espada/espada/AnimationPlayer.play("golpe")
+			else:
+				$espada/espada/AnimationPlayer.play("golpe_izquierda")
 		
 		mov = move_and_slide(mov,UP)
 	else:

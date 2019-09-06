@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Objetos/Node2D.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/run1.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/run2.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/parado.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/parado.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/run1.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/run2.png" type="Texture" id=4]
 [ext_resource path="res://Objetos/espada.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Jugador/HUDCanvasLayer.tscn" type="PackedScene" id=6]
 
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "muerto"
 length = 0.8
 tracks/0/type = "value"
@@ -87,24 +87,24 @@ tracks/4/keys = {
 "values": [ 3, 0 ]
 }
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "lado",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "parado",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "lado",
+"speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 5.93906
 height = 2.32614
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 5.60123, 8.34087 )
 
 [node name="Caballero" type="KinematicBody2D"]
@@ -113,22 +113,21 @@ script = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/dano = SubResource( 1 )
-anims/muerto = SubResource( 5 )
+anims/muerto = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.0223751, -1.16764 )
 z_index = 1
-frames = SubResource( 2 )
+frames = SubResource( 3 )
 animation = "lado"
 
 [node name="espada" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2.41778, 0.636 )
-scale = Vector2( 1, 1 )
 z_index = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.0735722, -0.00363731 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="contador_invul" type="Timer" parent="."]
 wait_time = 0.8
@@ -140,4 +139,4 @@ one_shot = true
 
 [node name="Area_de_daño" type="CollisionShape2D" parent="Colision"]
 position = Vector2( 0.046423, -0.0316525 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )

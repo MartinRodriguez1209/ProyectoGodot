@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objetos/espada.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/espada.png" type="Texture" id=2]
@@ -13,31 +13,69 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.204815 ),
+"times": PoolRealArray( 0, 0.2, 0.210928 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 120.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionPolygon2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "golpe_izquierda"
+length = 0.22
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.214998 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -120.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionPolygon2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 94.563, 50.448 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="espada" type="Area2D" parent="."]
 position = Vector2( -0.0322571, 0.0279388 )
 gravity_vec = Vector2( 2, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="espada"]
-autoplay = "golpe"
 anims/golpe = SubResource( 1 )
+anims/golpe_izquierda = SubResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="espada"]
 position = Vector2( -0.444946, -14.4465 )
 scale = Vector2( -1.34365, -1.39858 )
 polygon = PoolVector2Array( -3.05242, -6.97138, -3.2215, 6.10095, -0.566498, 8.39662, 2.354, 8.39662, 2.32582, -7.0718 )
+disabled = true
 
 [node name="Sprite" type="Sprite" parent="espada"]
 position = Vector2( -0.0505066, -11.7277 )
