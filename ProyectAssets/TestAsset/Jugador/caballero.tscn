@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Objetos/Node2D.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/run1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/run2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/parado.png" type="Texture" id=4]
+[ext_resource path="res://Objetos/espada.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Jugador/HUDCanvasLayer.tscn" type="PackedScene" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "lado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 5.93906
+height = 2.32614
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 5.60123, 8.34087 )
+
+[node name="Caballero" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 401.36, 230.451 )
+frames = SubResource( 1 )
+animation = "lado"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 401.264, 231.615 )
+shape = SubResource( 2 )
+
+[node name="espada" parent="." instance=ExtResource( 5 )]
+position = Vector2( 404.01, 232.255 )
+
+[node name="contador_invul" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="HUD" parent="." instance=ExtResource( 6 )]
+
+[node name="Colision" type="Area2D" parent="."]
+
+[node name="Area_de_daño" type="CollisionShape2D" parent="Colision"]
+position = Vector2( 401.384, 231.587 )
+shape = SubResource( 3 )
