@@ -8,7 +8,7 @@ var mov = Vector2()
 var velmax = 300
 var limit
 var vivo = 1
-var direc
+var direc = 1
 var knock = 50
 
 var vida = 3
@@ -80,11 +80,11 @@ func dano(lado,monto = 1):
 	lado = position.x - lado
 	vida -= monto
 	if lado > 0:
-		mov.x = 400 
-		mov.y = -500 
+		mov.x = 500 
+		mov.y = -600 
 	else :
-		mov.x = -400 
-		mov.y = -500 
+		mov.x = -500 
+		mov.y = -600 
 	get_node("HUD/HUDCanvasLayer").actualizar(vida)
 	if vida == 0:
 		kill()
@@ -95,5 +95,6 @@ func kill():
 	print("Game Over Man!")
 	vivo = 0
 	$AnimationPlayer.play("muerto")
+	$AnimatedSprite.play("parado")
 	
 

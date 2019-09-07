@@ -45,8 +45,14 @@ func _physics_process(delta):
 		pass
 	
 
-func recibir_golpe():
-	vida -=1
+func recibir_golpe(lado):
+	lado = position.x - lado
+	vida -= 1
+	if lado > 0: 
+		mov.y = -800 
+		mov.x = 400
+	else :
+		mov.y = -800 
 	if(vida == 0):
 		print("muerto")
 		$AnimationPlayer.play("muerte")

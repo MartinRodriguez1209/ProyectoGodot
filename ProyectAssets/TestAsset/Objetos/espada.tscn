@@ -5,7 +5,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "golpe"
-length = 0.22
+length = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
@@ -33,7 +33,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "golpe_izquierda"
-length = 0.22
+length = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1

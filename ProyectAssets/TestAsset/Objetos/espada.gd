@@ -15,7 +15,7 @@ func _ready():
 
 func _on_espada_body_entered(body):
 	if body.has_method("recibir_golpe"):
-		body.recibir_golpe()
+		body.recibir_golpe(position.x)
 
 func _on_Node2D_golpe():
 	pass # Replace with function body.
