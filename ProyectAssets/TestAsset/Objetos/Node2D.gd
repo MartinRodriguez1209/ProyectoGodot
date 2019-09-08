@@ -110,4 +110,5 @@ func disparar():
 		bala.init(direc)
 		get_parent().add_child(bala)
 		bala.rotation = 80 * -direc
+	
 

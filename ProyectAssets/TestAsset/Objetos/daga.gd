@@ -31,3 +31,7 @@ func mover(delta):
 func _on_Area2D_body_entered(body):
 	if body.has_method("recibir_golpe"):
 		body.recibir_golpe(position.x)
+		get_parent().remove_child(self)
+
+
+

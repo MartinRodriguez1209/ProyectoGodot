@@ -57,7 +57,6 @@ func recibir_golpe(lado):
 		$AnimationPlayer.play("dano")
 	if lado > 0: 
 		mov.y = -800 
-		mov.x = 400
 	else :
 		mov.y = -800 
 		
