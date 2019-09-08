@@ -6,7 +6,7 @@ const daga = preload("res://Objetos/daga.tscn")
 # var a = 2
 # var b = "text"
 var mov = Vector2()
-var velmax = 300
+var velmax = 180
 var limit
 var vivo = 1
 var direc = 1
@@ -65,7 +65,7 @@ func _physics_process(delta):
 		"""
 		if is_on_floor():
 			if Input.is_action_just_pressed("ui_up"):
-				mov.y += -velmax*5
+				mov.y += -velmax*6
 			if friction == true:
 				mov.x = lerp(mov.x, 0, 0.5)
 		if Input.is_action_just_pressed("space"):
