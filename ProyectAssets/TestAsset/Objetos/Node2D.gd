@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+const daga = preload("res://Objetos/daga.tscn")
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -10,6 +11,7 @@ var limit
 var vivo = 1
 var direc = 1
 var knock = 50
+var disparos = 3
 
 var vida = 3
 onready var tiempo_invulnerabilidad = $contador_invul
@@ -71,6 +73,8 @@ func _physics_process(delta):
 				$espada/espada/AnimationPlayer.play("golpe")
 			else:
 				$espada/espada/AnimationPlayer.play("golpe_izquierda")
+		if Input.is_action_just_pressed("A"):
+			disparar()
 		
 		mov = move_and_slide(mov,UP)
 	else:
@@ -97,4 +101,13 @@ func kill():
 	$AnimationPlayer.play("muerto")
 	$AnimatedSprite.play("parado")
 	
+
+func disparar():
+	if disparos > 0:
+		disparos -= 1
+		var bala = daga.instance()
+		bala.global_position = global_position
+		bala.init(direc)
+		get_parent().add_child(bala)
+		bala.rotation = 80 * -direc
 
