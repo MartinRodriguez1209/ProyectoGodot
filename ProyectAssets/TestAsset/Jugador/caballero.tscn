@@ -122,12 +122,11 @@ anims/dano = SubResource( 1 )
 anims/muerto = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0.0223999, -4.91956 )
+position = Vector2( 0.0223999, -3.91956 )
 z_index = 1
 frames = SubResource( 3 )
 animation = "lado"
-frame = 6
-playing = true
+frame = 1
 
 [node name="espada" parent="." instance=ExtResource( 11 )]
 position = Vector2( 2.41778, 0.636 )

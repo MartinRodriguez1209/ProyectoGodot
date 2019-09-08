@@ -1,8 +1,5 @@
 extends KinematicBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var mov = Vector2()
 var velmax = 50
 var direc = 1
@@ -10,14 +7,12 @@ var limit
 var vida = 2
 var vivo = 1
 const UP = Vector2(0,-1)
-
 export(int) var vel
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	limit = get_viewport_rect().size
 	connect("golpe",self,"_recibir_golpe")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	
 	if vivo == 1 : 
@@ -43,8 +38,7 @@ func _physics_process(delta):
 			$RayCast2D.position.x += 22 * direc
 	else:
 		pass
-	
-
+		
 func recibir_golpe(lado):
 	lado = position.x - lado
 	vida -= 1
@@ -59,9 +53,6 @@ func recibir_golpe(lado):
 		mov.y = -800 
 	else :
 		mov.y = -800 
-		
-	
-
 
 func _on_Area2D_body_entered(body):
 	if (body.has_method("_golpe")):

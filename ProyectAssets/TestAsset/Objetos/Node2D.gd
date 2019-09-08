@@ -1,10 +1,6 @@
 extends KinematicBody2D
 
 const daga = preload("res://Objetos/daga.tscn")
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var mov = Vector2()
 var velmax = 180
 var limit
@@ -14,13 +10,11 @@ var knock = 50
 var disparos = 3
 var control =1
 var timer
-
 var vida  = 3
 onready var tiempo_invulnerabilidad = $contador_invul
-
 const UP = Vector2(0,-1)
 export(int) var vel
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	timer = Timer.new()
 	timer.set_wait_time(0.1)
@@ -29,10 +23,7 @@ func _ready():
 	limit = get_viewport_rect().size
 	timer.connect("timeout", self, "_on_Timer_timeout")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	
-	
 
 	if vivo == 1:
 		var friction = false
@@ -44,8 +35,6 @@ func _physics_process(delta):
 				$AnimatedSprite.flip_h = false
 				$AnimatedSprite.play("lado")
 				$espada/espada/Sprite.flip_h = false
-			
-			
 			elif Input.is_action_pressed("ui_left"):
 				direc = -1
 				mov.x = -velmax
@@ -68,11 +57,9 @@ func _physics_process(delta):
 					$espada/espada/AnimationPlayer.play("golpe_izquierda")
 			if Input.is_action_just_pressed("A"):
 				disparar()
-			
 		mov = move_and_slide(mov,UP)
 	else:
 		pass
-	
 func dano(lado,monto = 1):
 	lado = position.x - lado
 	vida -= monto
@@ -84,19 +71,18 @@ func dano(lado,monto = 1):
 		mov.y = -600 
 	control = 0
 	timer.start()
-	
 	get_node("HUD/HUDCanvasLayer").actualizar(vida)
 	if vida == 0:
 		kill()
 	else:
 		$AnimationPlayer.play("dano")
-	
+
 func kill():
 	print("Game Over Man!")
 	vivo = 0
 	$AnimationPlayer.play("muerto")
 	$AnimatedSprite.play("parado")
-	
+
 
 func disparar():
 	if disparos > 0:
@@ -106,9 +92,6 @@ func disparar():
 		bala.init(direc)
 		get_parent().add_child(bala)
 		bala.rotation = 80 * -direc
-	
-
-
 
 func _on_Timer_timeout():
 	print("asdas")
