@@ -27,7 +27,7 @@ func _physics_process(delta):
 		
 		if is_on_wall():
 			direc = direc *-1
-			$RayCast2D.position.x += 20 * direc
+			$RayCast2D.position.x += 22 * direc
 		
 		if direc == 1:
 			$AnimatedSprite.flip_h = false
@@ -40,7 +40,7 @@ func _physics_process(delta):
 		
 		if $RayCast2D.is_colliding() == false: 
 			direc = direc *-1
-			$RayCast2D.position.x += 20 * direc
+			$RayCast2D.position.x += 22 * direc
 	else:
 		pass
 	
@@ -48,11 +48,6 @@ func _physics_process(delta):
 func recibir_golpe(lado):
 	lado = position.x - lado
 	vida -= 1
-	if lado > 0: 
-		mov.y = -800 
-		mov.x = 400
-	else :
-		mov.y = -800 
 	if(vida == 0):
 		print("muerto")
 		$AnimationPlayer.play("muerte")
@@ -60,6 +55,11 @@ func recibir_golpe(lado):
 		$AnimatedSprite.play("muerto")
 	else:
 		$AnimationPlayer.play("dano")
+	if lado > 0: 
+		mov.y = -800 
+		mov.x = 400
+	else :
+		mov.y = -800 
 		
 	
 

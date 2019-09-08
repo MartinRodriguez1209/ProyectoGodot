@@ -58,10 +58,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.000601127, 0.00390733 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false, true ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Area2D/Area_de_daño:disabled")
@@ -70,10 +70,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.00123104, 0.00492418 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false, true ]
 }
 
 [sub_resource type="SpriteFrames" id=3]
@@ -93,10 +93,10 @@ animations = [ {
 extents = Vector2( 10, 13.6497 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 11.8327, 13.7737 )
+extents = Vector2( 11.5726, 13.7737 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
-position = Vector2( -3.39374, 1.86655 )
+position = Vector2( 0.665632, 0.0108352 )
 script = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -109,26 +109,19 @@ frames = SubResource( 3 )
 animation = "muerto"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
-position = Vector2( 10.8503, -1.68391 )
+position = Vector2( 10.1544, -2.03186 )
 enabled = true
+exclude_parent = false
 cast_to = Vector2( 0, 16.44 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -0.620643, -0.00691223 )
+position = Vector2( -1.20056, -0.354856 )
 shape = SubResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( -0.131958, 0.065979 )
 
 [node name="Area_de_daño" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -0.90332, -0.128922 )
+position = Vector2( -1.01931, -0.360886 )
 shape = SubResource( 5 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
