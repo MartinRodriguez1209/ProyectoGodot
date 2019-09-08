@@ -111,7 +111,7 @@ radius = 6.31665
 height = 5.86523
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 6.73254, 9.82321 )
+extents = Vector2( 8.18188, 9.82321 )
 
 [node name="Caballero" type="KinematicBody2D"]
 position = Vector2( 560.745, 272.83 )
@@ -126,7 +126,7 @@ position = Vector2( 0.0223999, -4.91956 )
 z_index = 1
 frames = SubResource( 3 )
 animation = "lado"
-frame = 3
+frame = 6
 playing = true
 
 [node name="espada" parent="." instance=ExtResource( 11 )]
@@ -148,3 +148,6 @@ one_shot = true
 [node name="Area_de_daño" type="CollisionShape2D" parent="Colision"]
 position = Vector2( 0.046423, -0.0316525 )
 shape = SubResource( 5 )
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

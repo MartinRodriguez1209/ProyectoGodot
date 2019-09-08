@@ -12,16 +12,22 @@ var vivo = 1
 var direc = 1
 var knock = 50
 var disparos = 3
+var control =1
+var timer
 
-var vida = 3
+var vida  = 3
 onready var tiempo_invulnerabilidad = $contador_invul
 
 const UP = Vector2(0,-1)
 export(int) var vel
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	timer = Timer.new()
+	timer.set_wait_time(0.1)
+	add_child(timer)
 	get_node("HUD/HUDCanvasLayer").actualizar(vida)
 	limit = get_viewport_rect().size
+	timer.connect("timeout", self, "_on_Timer_timeout")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -31,51 +37,38 @@ func _physics_process(delta):
 	if vivo == 1:
 		var friction = false
 		mov.y += 100
-		if Input.is_action_pressed("ui_right"):
-			direc = 1
-			mov.x = velmax
-			$AnimatedSprite.flip_h = false
-			$AnimatedSprite.play("lado")
-			$espada/espada/Sprite.flip_h = false
-		
-		
-		elif Input.is_action_pressed("ui_left"):
-			direc = -1
-			mov.x = -velmax
-			$espada/espada.position *= Vector2(-1,0)
-			$AnimatedSprite.play("lado")
-			$AnimatedSprite.flip_h = true
-			$espada/espada/Sprite.flip_h = true
+		if control == 1:
+			if Input.is_action_pressed("ui_right"):
+				direc = 1
+				mov.x = velmax
+				$AnimatedSprite.flip_h = false
+				$AnimatedSprite.play("lado")
+				$espada/espada/Sprite.flip_h = false
 			
-		
-		
-		
-		else:
-			$AnimatedSprite.play("parado")
-			friction = true
-		
-		
-		
-		
-		"""
-		position += mov * delta
-		
-		position.x = clamp(position.x,0,limit.x)
-		position.y = clamp(position.y,0,limit.y)
-		"""
-		if is_on_floor():
-			if Input.is_action_just_pressed("ui_up"):
-				mov.y += -velmax*6
-			if friction == true:
-				mov.x = lerp(mov.x, 0, 0.5)
-		if Input.is_action_just_pressed("space"):
-			if direc == 1:
-				$espada/espada/AnimationPlayer.play("golpe")
+			
+			elif Input.is_action_pressed("ui_left"):
+				direc = -1
+				mov.x = -velmax
+				$espada/espada.position *= Vector2(-1,0)
+				$AnimatedSprite.play("lado")
+				$AnimatedSprite.flip_h = true
+				$espada/espada/Sprite.flip_h = true
 			else:
-				$espada/espada/AnimationPlayer.play("golpe_izquierda")
-		if Input.is_action_just_pressed("A"):
-			disparar()
-		
+				$AnimatedSprite.play("parado")
+				friction = true
+			if is_on_floor():
+				if Input.is_action_just_pressed("ui_up"):
+					mov.y += -velmax*6
+				if friction == true:
+					mov.x = lerp(mov.x, 0, 0.5)
+			if Input.is_action_just_pressed("space"):
+				if direc == 1:
+					$espada/espada/AnimationPlayer.play("golpe")
+				else:
+					$espada/espada/AnimationPlayer.play("golpe_izquierda")
+			if Input.is_action_just_pressed("A"):
+				disparar()
+			
 		mov = move_and_slide(mov,UP)
 	else:
 		pass
@@ -84,11 +77,14 @@ func dano(lado,monto = 1):
 	lado = position.x - lado
 	vida -= monto
 	if lado > 0:
-		mov.x = 500 
+		mov.x = 400 
 		mov.y = -600 
 	else :
-		mov.x = -500 
+		mov.x = -400 
 		mov.y = -600 
+	control = 0
+	timer.start()
+	
 	get_node("HUD/HUDCanvasLayer").actualizar(vida)
 	if vida == 0:
 		kill()
@@ -112,3 +108,8 @@ func disparar():
 		bala.rotation = 80 * -direc
 	
 
+
+
+func _on_Timer_timeout():
+	print("asdas")
+	control = 1
