@@ -19,6 +19,9 @@
 =======
 [ext_resource path="res://Sounds/cavelevel.wav" type="AudioStream" id=6]
 >>>>>>> f3703b50405a902515e4ed78797af1155641df18
+<<<<<<< HEAD
+>>>>>>> cbbcfc0082893bce16353042b07123c96fa4a62b
+=======
 >>>>>>> cbbcfc0082893bce16353042b07123c96fa4a62b
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -183,12 +186,15 @@ __meta__ = {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [node name="Musica" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -8.0
 [connection signal="finished" from="Musica" to="." method="_on_Musica_finished"]
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> cbbcfc0082893bce16353042b07123c96fa4a62b
 [node name="Fantasmin" parent="." instance=ExtResource( 6 )]
 position = Vector2( 286.061, 209.467 )
 =======
@@ -197,4 +203,7 @@ stream = ExtResource( 6 )
 volume_db = -4.673
 autoplay = true
 >>>>>>> f3703b50405a902515e4ed78797af1155641df18
+<<<<<<< HEAD
+>>>>>>> cbbcfc0082893bce16353042b07123c96fa4a62b
+=======
 >>>>>>> cbbcfc0082893bce16353042b07123c96fa4a62b
