@@ -1,17 +1,20 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Objetos/Node2D.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/caballero/caballero1.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/caballero/caballero2.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/caballero/caballero3.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/caballero/caballero4.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/caballero/caballero5.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/caballero/caballero6.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/caballero/caballero7.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/caballero/caballero8.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/parado.png" type="Texture" id=10]
-[ext_resource path="res://Objetos/espada.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Jugador/HUDCanvasLayer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Sounds/salto.wav" type="AudioStream" id=2]
+[ext_resource path="res://Sounds/sword effect.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/gameover.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sprites/caballero/caballero1.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/caballero/caballero2.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/caballero/caballero3.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/caballero/caballero4.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/caballero/caballero5.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/caballero/caballero6.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/caballero/caballero7.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/caballero/caballero8.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/parado.png" type="Texture" id=13]
+[ext_resource path="res://Objetos/espada.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Jugador/HUDCanvasLayer.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Animation" id=1]
 resource_name = "dano"
@@ -27,6 +30,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Daño:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -92,15 +107,27 @@ tracks/4/keys = {
 "update": 1,
 "values": [ 3, 0 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Muerte:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "lado",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "parado",
 "speed": 5.0
@@ -121,6 +148,18 @@ script = ExtResource( 1 )
 anims/dano = SubResource( 1 )
 anims/muerto = SubResource( 2 )
 
+[node name="Salto" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -11.556
+
+[node name="Daño" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -3.029
+
+[node name="Muerte" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.0223999, -3.91956 )
 z_index = 1
@@ -128,7 +167,7 @@ frames = SubResource( 3 )
 animation = "lado"
 frame = 1
 
-[node name="espada" parent="." instance=ExtResource( 11 )]
+[node name="espada" parent="." instance=ExtResource( 14 )]
 position = Vector2( 2.41778, 0.636 )
 z_index = 3
 
@@ -140,7 +179,7 @@ shape = SubResource( 4 )
 wait_time = 0.8
 one_shot = true
 
-[node name="HUD" parent="." instance=ExtResource( 12 )]
+[node name="HUD" parent="." instance=ExtResource( 15 )]
 
 [node name="Colision" type="Area2D" parent="."]
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cavelevel.wav-d19d1e222c01565e5d4193775ad8a3af.sample"
+
+[deps]
+
+source_file="res://Sounds/cavelevel.wav"
+dest_files=[ "res://.import/cavelevel.wav-d19d1e222c01565e5d4193775ad8a3af.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

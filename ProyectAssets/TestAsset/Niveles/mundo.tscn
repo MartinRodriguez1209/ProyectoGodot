@@ -5,7 +5,11 @@
 [ext_resource path="res://Objetos/ogro.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Tiles Map/bloques.tres" type="TileSet" id=4]
 [ext_resource path="res://Jugador/caballero.tscn" type="PackedScene" id=5]
+<<<<<<< HEAD
 [ext_resource path="res://Objetos/Fantasmin.tscn" type="PackedScene" id=6]
+=======
+[ext_resource path="res://Sounds/cavelevel.wav" type="AudioStream" id=6]
+>>>>>>> f3703b50405a902515e4ed78797af1155641df18
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64.4697, 16.2394 )
@@ -167,5 +171,12 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+<<<<<<< HEAD
 [node name="Fantasmin" parent="." instance=ExtResource( 6 )]
 position = Vector2( 286.061, 209.467 )
+=======
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -4.673
+autoplay = true
+>>>>>>> f3703b50405a902515e4ed78797af1155641df18

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Objetos/ogro.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/ogro1.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Sprites/ogro6.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/ogro7.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/ogro8.png" type="Texture" id=9]
+[ext_resource path="res://Sounds/DañoOgro.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sounds/muerteogro.wav" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "dano"
@@ -23,6 +25,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.109804, 0.462745, 0.0666667, 1 ), Color( 1, 1, 1, 1 ), Color( 0.0431373, 0.513726, 0.117647, 1 ), Color( 1, 1, 1, 1 ), Color( 0.0431373, 0.513726, 0.117647, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dano:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -75,6 +89,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("muerte:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -124,4 +150,12 @@ position = Vector2( -0.131958, 0.065979 )
 [node name="Area_de_daño" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -1.01931, -0.360886 )
 shape = SubResource( 5 )
+
+[node name="dano" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -16.466
+
+[node name="muerte" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -16.0
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

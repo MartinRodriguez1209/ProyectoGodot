@@ -48,6 +48,7 @@ func _physics_process(delta):
 			if is_on_floor():
 				if Input.is_action_just_pressed("ui_up"):
 					mov.y += -velmax*6
+					$Salto.play()
 				if friction == true:
 					mov.x = lerp(mov.x, 0, 0.5)
 			if Input.is_action_just_pressed("space"):
@@ -59,7 +60,10 @@ func _physics_process(delta):
 				disparar()
 		mov = move_and_slide(mov,UP)
 	else:
-		pass
+		mov.y = 400
+		mov.x = 0
+		mov = move_and_slide(mov,UP)
+	
 func dano(lado,monto = 1):
 	lado = position.x - lado
 	vida -= monto
@@ -94,5 +98,4 @@ func disparar():
 		bala.rotation = 80 * -direc
 
 func _on_Timer_timeout():
-	print("asdas")
 	control = 1

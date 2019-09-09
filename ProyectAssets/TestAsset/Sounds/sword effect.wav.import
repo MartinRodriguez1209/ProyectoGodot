@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sword effect.wav-f58250e169f6c297f3cf08f3601cce8b.sample"
+
+[deps]
+
+source_file="res://Sounds/sword effect.wav"
+dest_files=[ "res://.import/sword effect.wav-f58250e169f6c297f3cf08f3601cce8b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
