@@ -6,13 +6,19 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	pass # Replace with function body.
+	$Musica_ini.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 
-func _on_Musica_finished():
-	$Musica.play()
+
+
+
+func _on_Musica_loop_finished():
+	$Musica_loop.play()
+
+
+func _on_Musica_ini_finished():
+	$Musica_loop.play()

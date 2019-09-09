@@ -1,28 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
-<<<<<<< HEAD
 [ext_resource path="res://Niveles/mundo.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/forest-road-preview.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/ladrillo.png" type="Texture" id=3]
 [ext_resource path="res://Objetos/ogro.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Tiles Map/bloques.tres" type="TileSet" id=5]
 [ext_resource path="res://Jugador/caballero.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Sounds/cavelevel.wav" type="AudioStream" id=7]
-=======
-[ext_resource path="res://Sprites/forest-road-preview.png" type="Texture" id=1]
-[ext_resource path="res://Sprites/ladrillo.png" type="Texture" id=2]
-[ext_resource path="res://Objetos/ogro.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Tiles Map/bloques.tres" type="TileSet" id=4]
-[ext_resource path="res://Jugador/caballero.tscn" type="PackedScene" id=5]
-<<<<<<< HEAD
-[ext_resource path="res://Objetos/Fantasmin.tscn" type="PackedScene" id=6]
-=======
-[ext_resource path="res://Sounds/cavelevel.wav" type="AudioStream" id=6]
->>>>>>> f3703b50405a902515e4ed78797af1155641df18
-<<<<<<< HEAD
->>>>>>> cbbcfc0082893bce16353042b07123c96fa4a62b
-=======
->>>>>>> cbbcfc0082893bce16353042b07123c96fa4a62b
+[ext_resource path="res://Sounds/loop_primer_level.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/inicio_primer_level.wav" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64.4697, 16.2394 )
@@ -180,30 +165,16 @@ limit_top = 0
 limit_right = 1366
 limit_bottom = 768
 smoothing_enabled = true
-smoothing_speed = 3.0
 __meta__ = {
 "_edit_lock_": true
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[node name="Musica" type="AudioStreamPlayer" parent="."]
+[node name="Musica_loop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -8.0
-[connection signal="finished" from="Musica" to="." method="_on_Musica_finished"]
-=======
-<<<<<<< HEAD
-=======
->>>>>>> cbbcfc0082893bce16353042b07123c96fa4a62b
-[node name="Fantasmin" parent="." instance=ExtResource( 6 )]
-position = Vector2( 286.061, 209.467 )
-=======
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-volume_db = -4.673
-autoplay = true
->>>>>>> f3703b50405a902515e4ed78797af1155641df18
-<<<<<<< HEAD
->>>>>>> cbbcfc0082893bce16353042b07123c96fa4a62b
-=======
->>>>>>> cbbcfc0082893bce16353042b07123c96fa4a62b
+volume_db = -4.0
+
+[node name="Musica_ini" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -4.0
+[connection signal="finished" from="Musica_loop" to="." method="_on_Musica_loop_finished"]
+[connection signal="finished" from="Musica_ini" to="." method="_on_Musica_ini_finished"]
