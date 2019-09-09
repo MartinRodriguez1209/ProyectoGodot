@@ -14,7 +14,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 4.83181, 4.48624 )
+extents = Vector2( 4.8106, 4.44733 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 4.28727, 4.01224 )
@@ -38,3 +38,4 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.366257, 1.46504 )
 shape = SubResource( 3 )
+[connection signal="body_entered" from="Area_dano" to="." method="_on_Area_dano_body_entered"]
