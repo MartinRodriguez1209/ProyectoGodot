@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Niveles/Mundo2.gd" type="Script" id=1]
+[ext_resource path="res://Objetos/ogro.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Jugador/HUDCanvasLayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/forest-road-preview.png" type="Texture" id=4]
+[ext_resource path="res://Jugador/caballero.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Tiles Map/bloques.tres" type="TileSet" id=6]
+[ext_resource path="res://Sounds/inicio_primer_level.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/loop_primer_level.wav" type="AudioStream" id=8]
+
+[node name="Mundo2" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 350, 484 )
+z_index = 1
+
+[node name="Hud" parent="." instance=ExtResource( 3 )]
+position = Vector2( 560.745, 272.83 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 683, 384 )
+scale = Vector2( 5.69539, 3.43224 )
+z_index = -2
+texture = ExtResource( 4 )
+
+[node name="Caballero" parent="." instance=ExtResource( 5 )]
+position = Vector2( 168.496, 578.913 )
+
+[node name="Camera2D" type="Camera2D" parent="Caballero"]
+position = Vector2( 1.50421, 1.08704 )
+current = true
+zoom = Vector2( 0.4, 0.4 )
+limit_left = 0
+limit_top = 0
+limit_right = 1366
+limit_bottom = 769
+smoothing_enabled = true
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 2162703, 0, 0, 2162711, 0, 0, 2228258, 0, 0, 2228269, 0, 0, 2228277, 0, 0, 2424849, 0, 0, 2424857, 0, 0, 2621440, 0, 0, 2621448, 0, 0 )
+
+[node name="Musica_ini" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -6.0
+
+[node name="Musica_loop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = -6.0
+[connection signal="senalmuerto" from="Caballero" to="." method="_on_Caballero_senalmuerto"]

@@ -61,12 +61,11 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("A"):
 				disparar()
 		mov = move_and_slide(mov,UP)
-<<<<<<< HEAD
-=======
+
 		if position.y > limit.y:
 			vivo=0
 			kill()
->>>>>>> 2c8dfb9d066364a8cf908e06127fb33c562009f3
+
 	else:
 		$"Colision/Area_de_daño".disabled = true
 		mov.y = 400
