@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Niveles/mundo.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/forest-road-preview.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Jugador/caballero.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Sounds/loop_primer_level.wav" type="AudioStream" id=7]
 [ext_resource path="res://Sounds/inicio_primer_level.wav" type="AudioStream" id=8]
+[ext_resource path="res://Objetos/Fantasmin.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Baba.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64.4697, 16.2394 )
@@ -176,5 +178,11 @@ volume_db = -4.0
 [node name="Musica_ini" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -4.0
+
+[node name="Fantasmin" parent="." instance=ExtResource( 9 )]
+position = Vector2( 318.594, 147.348 )
+
+[node name="Baba" parent="." instance=ExtResource( 10 )]
+position = Vector2( 380.824, 240.91 )
 [connection signal="finished" from="Musica_loop" to="." method="_on_Musica_loop_finished"]
 [connection signal="finished" from="Musica_ini" to="." method="_on_Musica_ini_finished"]
