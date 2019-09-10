@@ -1,0 +1,275 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Objetos/Boss.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/idle/_0000_Layer-1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/idle/_0001_Layer-2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/idle/_0002_Layer-3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/idle/_0003_Layer-4.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/idle/_0004_Layer-5.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/idle/_0005_Layer-6.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/breath/_0000_Layer-1.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/breath/_0001_Layer-2.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/breath/_0002_Layer-3.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/breath/_0003_Layer-4.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/breath/_0004_Layer-5.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/breath/_0005_Layer-6.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/breath/_0006_Layer-7.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/tail/_0000_Layer-1.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/tail/_0001_Layer-2.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/tail/_0002_Layer-3.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/tail/_0003_Layer-4.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/tail/_0004_Layer-5.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/tail/_0005_Layer-6.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/tail/_0006_Layer-7.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Dragon/PNG/sprites/tail/_0007_Layer-8.png" type="Texture" id=22]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "fuego",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "ataquecola",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "muerte",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 35.2953, 15.8333 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 38.0221, 19.5396 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "ataquecola"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "ataquecola", "parado" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("area_ataque_cola/collision_cola:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("deteccion_cola:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "ataquefuego"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "fuego", "parado" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("area_ataque_fuego/collision_ataque:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("deteccion_fuego/deteccion_collision_fuego:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "muerte"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.995968 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 37.6596, 12.6415 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 19.0126, 12.5836 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 70.2657, 30.9118 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 17.7982, 30.0915 )
+
+[node name="Boss" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -22.6473, -15.5295 )
+frames = SubResource( 1 )
+animation = "ataquecola"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.51722, 0.685577 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="area_dano" type="Area2D" parent="."]
+position = Vector2( -22.6473, -15.5295 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="areadano" type="CollisionShape2D" parent="area_dano"]
+position = Vector2( 20, 14.362 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ataquecola = SubResource( 4 )
+anims/ataquefuego = SubResource( 5 )
+anims/muerte = SubResource( 8 )
+
+[node name="area_ataque_fuego" type="Area2D" parent="."]
+position = Vector2( -56.0687, -2.04945 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="collision_ataque" type="CollisionShape2D" parent="area_ataque_fuego"]
+position = Vector2( -6.90063, 6.83773 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="area_ataque_cola" type="Area2D" parent="."]
+position = Vector2( -25.6985, -15.5295 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="collision_cola" type="CollisionShape2D" parent="area_ataque_cola"]
+position = Vector2( -22.6642, 19.3673 )
+shape = SubResource( 7 )
+disabled = true
+
+[node name="deteccion_cola" type="Area2D" parent="."]
+
+[node name="deteccion_collision_cola" type="CollisionShape2D" parent="deteccion_cola"]
+position = Vector2( -35.3478, -11.2127 )
+shape = SubResource( 9 )
+
+[node name="deteccion_fuego" type="Area2D" parent="."]
+
+[node name="deteccion_collision_fuego" type="CollisionShape2D" parent="deteccion_fuego"]
+position = Vector2( -124.647, -11.3942 )
+shape = SubResource( 10 )
+
+[node name="timer_cola" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="timer_fuego" type="Timer" parent="."]
+wait_time = 5.0
+[connection signal="body_entered" from="area_dano" to="." method="_on_area_dano_body_entered"]
+[connection signal="body_entered" from="area_ataque_fuego" to="." method="_on_area_ataque_fuego_body_entered"]
+[connection signal="body_entered" from="area_ataque_cola" to="." method="_on_area_ataque_cola_body_entered"]
+[connection signal="body_entered" from="deteccion_cola" to="." method="_on_deteccion_cola_body_entered"]
+[connection signal="body_entered" from="deteccion_fuego" to="." method="_on_deteccion_fuego_body_entered"]
+[connection signal="timeout" from="timer_cola" to="." method="_on_timer_cola_timeout"]
+[connection signal="timeout" from="timer_fuego" to="." method="_on_timer_fuego_timeout"]
