@@ -126,7 +126,7 @@ animations = [ {
 "name": "lado",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "parado",
 "speed": 5.0

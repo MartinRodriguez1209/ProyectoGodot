@@ -11,11 +11,13 @@ var disparos = 3
 var control =1
 var timer
 var vida  = 3
+signal senalmuerto
 onready var tiempo_invulnerabilidad = $contador_invul
 const UP = Vector2(0,-1)
 export(int) var vel
 
 func _ready():
+	connect("senalmuerto", self, "signal_handler")
 	timer = Timer.new()
 	timer.set_wait_time(0.1)
 	add_child(timer)
@@ -59,11 +61,18 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("A"):
 				disparar()
 		mov = move_and_slide(mov,UP)
+<<<<<<< HEAD
+=======
+		if position.y > limit.y:
+			vivo=0
+			kill()
+>>>>>>> 2c8dfb9d066364a8cf908e06127fb33c562009f3
 	else:
 		$"Colision/Area_de_daño".disabled = true
 		mov.y = 400
 		mov.x = 0
 		mov = move_and_slide(mov,UP)
+		get_node("HUD/HUDCanvasLayer").actualizar(vida)
 	
 func dano(lado,monto = 1):
 	lado = position.x - lado
@@ -87,6 +96,8 @@ func kill():
 	vivo = 0
 	$AnimationPlayer.play("muerto")
 	$AnimatedSprite.play("parado")
+	emit_signal("senalmuerto")
+	vida = 0
 
 
 func disparar():

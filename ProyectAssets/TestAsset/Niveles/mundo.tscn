@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Niveles/mundo.gd" type="Script" id=1]
@@ -13,6 +14,18 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64.4697, 16.2394 )
+=======
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Niveles/mundo.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/forest-road-preview.png" type="Texture" id=2]
+[ext_resource path="res://Objetos/ogro.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tiles Map/bloques.tres" type="TileSet" id=4]
+[ext_resource path="res://Jugador/caballero.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sounds/loop_primer_level.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/inicio_primer_level.wav" type="AudioStream" id=7]
+[ext_resource path="res://Objetos/Fantasmin.tscn" type="PackedScene" id=8]
+>>>>>>> 2c8dfb9d066364a8cf908e06127fb33c562009f3
 
 [node name="mundo" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,146 +35,37 @@ position = Vector2( 682.895, 381.925 )
 scale = Vector2( 5.69262, 3.42732 )
 texture = ExtResource( 2 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( -1.84213, 0.141724 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D"]
-position = Vector2( 401.195, 274.447 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 401.302, 276.86 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2( 126.958, 0.14093 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D2"]
-position = Vector2( 401.195, 274.447 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( 401.302, 276.86 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2( 382.02, 0.14093 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D4"]
-position = Vector2( 401.195, 274.447 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2( 401.302, 276.86 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="."]
-position = Vector2( 518.953, -94.2892 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D5"]
-position = Vector2( 401.195, 274.447 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
-position = Vector2( 401.302, 276.86 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D6" type="StaticBody2D" parent="."]
-position = Vector2( 650.063, 89.4884 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D6"]
-position = Vector2( 401.195, 274.447 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6"]
-position = Vector2( 401.302, 276.86 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D7" type="StaticBody2D" parent="."]
-position = Vector2( 448.455, 217.432 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D7"]
-position = Vector2( 401.195, 274.447 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D7"]
-position = Vector2( 401.302, 276.86 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D8" type="StaticBody2D" parent="."]
-position = Vector2( 213.261, 316.49 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D8"]
-position = Vector2( 401.195, 274.447 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D8"]
-position = Vector2( 401.302, 276.86 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2( 253.433, 0.132004 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D3"]
-position = Vector2( 401.195, 274.447 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2( 401.302, 276.86 )
-shape = SubResource( 1 )
-
-[node name="ogro1" parent="." instance=ExtResource( 4 )]
+[node name="ogro1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 166.309, 71.8522 )
 
-[node name="ogro4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 126.312, 311.187 )
+[node name="ogro4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 838.658, 609.14 )
 
-[node name="ogro2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 616.563, 201.741 )
+[node name="ogro2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 674.881, 623.96 )
 
-[node name="ogro3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 288.044, 83.5138 )
+[node name="ogro3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 402.346, 623.534 )
+
+[node name="ogro5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1104.16, 543.056 )
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 5 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 393218, 0, 0, 393219, 0, 0, 393221, 0, 0, 393223, 0, 0, 393225, 0, 0, 393227, 0, 0, 1114132, 3, 0, 1179667, 3, 0, 1179668, 3, 0, 1179669, 3, 0, 1245184, 2, 0, 1245202, 3, 0, 1245203, 3, 0, 1245204, 3, 0, 1245205, 3, 0, 1310720, 3, 0, 1310721, 3, 0, 1310722, 3, 0, 1310723, 3, 0, 1310737, 3, 0, 1310738, 3, 0, 1310739, 3, 0, 1310740, 3, 0, 1310741, 3, 0, 1376256, 3, 0, 1376258, 3, 0, 1376259, 3, 0, 1376272, 3, 0, 1376273, 3, 0, 1376274, 3, 0, 1376275, 3, 0, 1376276, 3, 0, 1376277, 3, 0, 1441792, 3, 0, 1441793, 3, 0, 1441794, 3, 0, 1441795, 3, 0, 1441796, 0, 0, 1441797, 0, 0, 1441798, 0, 0, 1441807, 3, 0, 1441808, 3, 0, 1441809, 3, 0, 1441810, 3, 0, 1441811, 3, 0, 1441812, 3, 0, 1441813, 3, 0, 1507328, 3, 0, 1507329, 3, 0, 1507330, 3, 0, 1507331, 3, 0, 1507332, 0, 0, 1507334, 0, 0, 1507342, 3, 0, 1507343, 3, 0, 1507344, 3, 0, 1507345, 3, 0, 1507346, 3, 0, 1507347, 3, 0, 1507348, 3, 0, 1507349, 3, 0, 1507360, 1, 0, 1572864, 3, 0, 1572865, 3, 0, 1572866, 3, 0, 1572867, 3, 0, 1572868, 0, 0, 1572869, 0, 0, 1572870, 0, 0, 1572871, 3, 0, 1572872, 3, 0, 1572873, 3, 0, 1572874, 3, 0, 1572875, 3, 0, 1572876, 3, 0, 1572877, 3, 0, 1638400, 3, 0, 1638401, 3, 0, 1638402, 3, 0, 1638403, 3, 0, 1638404, 3, 0, 1638405, 3, 0, 1638406, 3, 0, 1638407, 3, 0, 1638408, 3, 0, 1703968, 1, 0, 1703971, 5, 0, 1769504, 9, 0, 1769506, 5, 0, 1769507, 5, 0, 1835037, 0, 0, 1900578, 5, 0, 1900579, 5, 0, 1900580, 5, 0, 1900581, 0, 0, 1966107, 6, 0, 1966108, 4, 0, 1966114, 5, 0, 2031628, 0, 0, 2031635, 0, 0, 2031642, 6, 0, 2031643, 4, 0, 2031644, 5, 0, 2031645, 5, 0, 2031646, 5, 0, 2031647, 5, 0, 2031648, 5, 0, 2031649, 5, 0, 2031650, 5, 0, 2031651, 5, 0, 2031652, 5, 0, 2097179, 5, 0, 2097180, 5, 0, 2097181, 5, 0, 2097182, 5, 0, 2097183, 5, 0, 2097184, 5, 0, 2097185, 5, 0, 2097186, 5, 0, 2097187, 5, 0, 2097188, 5, 0, 2162715, 5, 0, 2162716, 5, 0, 2162717, 5, 0, 2162718, 5, 0, 2162719, 5, 0, 2162720, 5, 0, 2162721, 5, 0, 2162722, 5, 0, 2162723, 5, 0, 2162724, 5, 0, 2293803, 0, 0, 2293811, 0, 0 )
+tile_data = PoolIntArray( 393218, 0, 0, 393219, 0, 0, 393221, 0, 0, 393223, 0, 0, 393225, 0, 0, 393227, 0, 0, 2293825, 0, 0, 2293836, 0, 0, 2424860, 0, 0, 2424889, 0, 0, 2555942, 0, 0, 2555953, 0, 0, 2686998, 0, 0, 2687006, 0, 0, 2949120, 0, 0, 2949128, 0, 0, 2949136, 0, 0 )
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 529.694, 229.453 )
+[node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 508.7, 559.53 )
 
-[node name="Caballero" parent="." instance=ExtResource( 6 )]
-position = Vector2( 486.636, 234.385 )
+[node name="Caballero" parent="." instance=ExtResource( 5 )]
+position = Vector2( 66.7498, 695.094 )
 
 [node name="Camera2D" type="Camera2D" parent="Caballero"]
 position = Vector2( 1.4165, 5.0284 )
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.4, 0.4 )
 limit_left = 0
 limit_top = 0
 limit_right = 1366
@@ -172,17 +76,23 @@ __meta__ = {
 }
 
 [node name="Musica_loop" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 6 )
 volume_db = -4.0
 
 [node name="Musica_ini" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 7 )
 volume_db = -4.0
 
+<<<<<<< HEAD
 [node name="Fantasmin" parent="." instance=ExtResource( 9 )]
 position = Vector2( 318.594, 147.348 )
 
 [node name="Baba" parent="." instance=ExtResource( 10 )]
 position = Vector2( 380.824, 240.91 )
+=======
+[node name="Fantasmin" parent="." instance=ExtResource( 8 )]
+position = Vector2( 760.152, 609.835 )
+[connection signal="senalmuerto" from="Caballero" to="." method="_on_Caballero_senalmuerto"]
+>>>>>>> 2c8dfb9d066364a8cf908e06127fb33c562009f3
 [connection signal="finished" from="Musica_loop" to="." method="_on_Musica_loop_finished"]
 [connection signal="finished" from="Musica_ini" to="." method="_on_Musica_ini_finished"]
