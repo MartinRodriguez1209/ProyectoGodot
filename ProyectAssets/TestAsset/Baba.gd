@@ -47,13 +47,11 @@ func recibir_golpe(lado):
 	vida -= 1
 	if(vida == 0):
 		print("muerto")
-		#$AnimationPlayer.play("muerte")
+		$AnimationPlayer.play("muerte")
 		vivo = 0
-		
-		#$AnimatedSprite.play("muerto")
 	else:
-		pass
-		#$AnimationPlayer.play("dano")
+		
+		$AnimationPlayer.play("dano")
 	if lado > 0: 
 		mov.y = -800 
 	else :

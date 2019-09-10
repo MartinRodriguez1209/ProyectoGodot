@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Niveles/Mundo2.gd" type="Script" id=1]
 [ext_resource path="res://Objetos/ogro.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Tiles Map/bloques.tres" type="TileSet" id=6]
 [ext_resource path="res://Sounds/inicio_primer_level.wav" type="AudioStream" id=7]
 [ext_resource path="res://Sounds/loop_primer_level.wav" type="AudioStream" id=8]
+[ext_resource path="res://Baba.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objetos/Fantasmin.tscn" type="PackedScene" id=10]
 
 [node name="Mundo2" type="Node2D"]
 script = ExtResource( 1 )
@@ -51,4 +53,19 @@ volume_db = -6.0
 [node name="Musica_loop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
 volume_db = -6.0
+
+[node name="Baba" parent="." instance=ExtResource( 9 )]
+position = Vector2( 630, 540 )
+
+[node name="Baba3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 810, 540 )
+
+[node name="Baba4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 870, 540 )
+
+[node name="Fantasmin" parent="." instance=ExtResource( 10 )]
+position = Vector2( 680.849, 515.333 )
+
+[node name="Fantasmin2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 703.533, 572.636 )
 [connection signal="senalmuerto" from="Caballero" to="." method="_on_Caballero_senalmuerto"]

@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Baba.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/baba1.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/baba2.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/baba3.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/baba4.png" type="Texture" id=5]
+[ext_resource path="res://Sounds/muerteogro.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/DañoOgro.wav" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.99369, 7.06879 )
@@ -19,6 +21,72 @@ animations = [ {
 "name": "baba",
 "speed": 5.0
 } ]
+
+[sub_resource type="Animation" id=4]
+resource_name = "dano"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.705882, 0.392157, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.811765, 0.45098, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dano:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "muerte"
+tracks/0/type = "value"
+tracks/0/path = NodePath("muerte:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.964706, 0.819608, 0.0313726, 1 ) ]
+}
 
 [node name="Baba" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -39,9 +107,19 @@ frames = SubResource( 3 )
 animation = "baba"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/dano = SubResource( 4 )
+anims/muerte = SubResource( 5 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 10.852, 0.29978 )
 enabled = true
 cast_to = Vector2( 0, 11 )
+
+[node name="muerte" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -16.0
+
+[node name="dano" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -8.0
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
