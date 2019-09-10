@@ -22,3 +22,8 @@ func _on_Musica_loop_finished():
 
 func _on_Musica_ini_finished():
 	$Musica_loop.play()
+
+
+func _on_Caballero_senalmuerto():
+	$Musica_ini.stop()
+	$Musica_loop.stop()

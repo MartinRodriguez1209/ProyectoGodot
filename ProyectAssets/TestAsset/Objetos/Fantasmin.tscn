@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Fantasmin.gd" type="Script" id=1]
+[ext_resource path="res://Objetos/Fantasmin.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/cabeza1.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/cabeza3.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/cabeza2.png" type="Texture" id=4]
