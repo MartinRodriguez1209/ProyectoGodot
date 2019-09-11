@@ -110,3 +110,6 @@ func disparar():
 
 func _on_Timer_timeout():
 	control = 1
+
+func position():
+	return position.x
