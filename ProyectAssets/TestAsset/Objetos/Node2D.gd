@@ -10,7 +10,7 @@ var knock = 50
 var disparos = 3
 var control =1
 var timer
-var vida  = 300
+var vida  = 3
 signal senalmuerto
 onready var tiempo_invulnerabilidad = $contador_invul
 const UP = Vector2(0,-1)

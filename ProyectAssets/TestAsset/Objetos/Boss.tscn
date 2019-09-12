@@ -275,7 +275,7 @@ position = Vector2( 0.00571442, 0.128323 )
 shape = SubResource( 10 )
 
 [node name="timer_cola" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 
 [node name="timer_fuego" type="Timer" parent="."]
 wait_time = 5.0
@@ -290,7 +290,7 @@ wait_time = 2.0
 position = Vector2( -22.6473, -15.5295 )
 frames = SubResource( 1 )
 animation = "parado"
-frame = 4
+frame = 2
 playing = true
 [connection signal="body_entered" from="area_dano" to="." method="_on_area_dano_body_entered"]
 [connection signal="body_entered" from="area_ataque_fuego" to="." method="_on_area_ataque_fuego_body_entered"]
