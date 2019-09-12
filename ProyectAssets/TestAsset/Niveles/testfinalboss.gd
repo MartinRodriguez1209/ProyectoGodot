@@ -14,3 +14,5 @@ func _process(delta):
 		$Boss.sentido = 1
 	else:
 		$Boss.sentido = -1
+
+

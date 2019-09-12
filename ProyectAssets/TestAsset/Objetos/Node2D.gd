@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const daga = preload("res://Objetos/daga.tscn")
 var mov = Vector2()
-var velmax = 180
+var velmax = 200
 var limit
 var vivo = 1
 var direc = 1
@@ -10,7 +10,7 @@ var knock = 50
 var disparos = 3
 var control =1
 var timer
-var vida  = 3
+var vida  = 300
 signal senalmuerto
 onready var tiempo_invulnerabilidad = $contador_invul
 const UP = Vector2(0,-1)
@@ -49,7 +49,7 @@ func _physics_process(delta):
 				friction = true
 			if is_on_floor():
 				if Input.is_action_just_pressed("ui_up"):
-					mov.y += -velmax*6
+					mov.y += -velmax*10
 					$Salto.play()
 				if friction == true:
 					mov.x = lerp(mov.x, 0, 0.5)

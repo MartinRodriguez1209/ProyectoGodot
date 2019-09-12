@@ -10,36 +10,46 @@ var control = 1
 var sentido = 1
 var flag_caminar = 1
 var flag_espera = 1
-
+var sprite_sentido = -1
 
 func _ready():
 	pass
 
 func _process(delta):
+	
 	if vivo == 1:
-		if flag_caminar == 1:
-			if flag_espera == 1:
+		if sentido == 1 :
+			$area_ataque_cola.position.x = 25.698
+			$area_ataque_fuego.position.x = 56.069
+			$deteccion_cola.position.x = 36.313
+			$deteccion_fuego.position.x = 125.351
+			$area_dano.position.x = 0.353
+			$AnimatedSprite.flip_h = true
+			$AnimatedSprite.position.x =22.647
+		else:
+			$area_ataque_cola.position.x = -25.698
+			$area_ataque_fuego.position.x = -56.069
+			$deteccion_cola.position.x = -36.313
+			$deteccion_fuego.position.x = -125.351
+			$area_dano.position.x = -0.353
+			$AnimatedSprite.flip_h = false
+			$AnimatedSprite.position.x = -22.647
+		if flag_caminar != 0:
+			if flag_espera != 0:
 				flag_espera = 0
 				$timer_caminar.start()
-				print("if")
-			else:
-				mov.y += 100
-				mov.x = velmax * sentido
-				$AnimatedSprite.play("parado")
-				mov = move_and_slide(mov,UP)
+			mov.y += 100
+			mov.x = velmax * sentido
+			mov = move_and_slide(mov,UP)
+			$deteccion_cola.get_overlapping_bodies()
 	else:
 		pass
-
-
-
 
 func _on_area_dano_body_entered(body):
 	if (body.has_method("_golpe")):
 		body._golpe()
 	if(body.has_method("dano")):
 		body.dano(position.x)
-
-
 
 func recibir_golpe(lado):
 	lado = position.x - lado
@@ -51,10 +61,7 @@ func recibir_golpe(lado):
 		$AnimatedSprite.play("muerto")
 	else:
 		$AnimationPlayer.play("dano")
-	if lado > 0: 
-		mov.y = -800 
-	else :
-		mov.y = -800 
+		mov.y = -800
 
 func _on_deteccion_cola_body_entered(body): #Detecta si hay enemigo en el radio de la cola y hace el ataque
 	if control == 1 :
@@ -70,7 +77,6 @@ func _on_area_ataque_cola_body_entered(body):#si la cola golpeo inflige daño
 	if(body.has_method("dano")):
 		body.dano(position.x)
 
-
 func _on_deteccion_fuego_body_entered(body): #Detecta si hay enemigo en el radio del fuegoy ataca
 	if control == 1:
 		if(body.has_method("dano")):
@@ -85,27 +91,24 @@ func _on_area_ataque_fuego_body_entered(body):
 	if(body.has_method("dano")):
 		body.dano(position.x)
 
-
 func _on_timer_cola_timeout():
+	$timer_cola.stop()
 	control = 1
 
 func _on_timer_fuego_timeout():
+	$timer_fuego.stop()
 	control = 1
 
 func position():
 	return position.x
 
-
-
 func _on_timer_caminar_timeout():
 	flag_caminar = 0
 	flag_espera = 0
+	$timer_espera.stop()
 	$timer_espera.start()
-
-
-
 
 func _on_timer_espera_timeout():
 	flag_caminar = 1
 	flag_espera = 1
-
+	$timer_espera.stop()
