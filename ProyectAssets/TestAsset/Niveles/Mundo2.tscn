@@ -43,6 +43,8 @@ smoothing_enabled = true
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 6 )
 cell_size = Vector2( 16, 16 )
+collision_layer = 3
+collision_mask = 2
 format = 1
 tile_data = PoolIntArray( 2162703, 0, 0, 2162711, 0, 0, 2228258, 0, 0, 2228269, 0, 0, 2228277, 0, 0, 2424849, 0, 0, 2424857, 0, 0, 2621440, 0, 0, 2621448, 0, 0 )
 

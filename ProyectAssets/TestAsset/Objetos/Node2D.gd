@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const daga = preload("res://Objetos/daga.tscn")
 var mov = Vector2()
-var velmax = 200
+var velmax = 180
 var limit
 var vivo = 1
 var direc = 1
@@ -49,7 +49,7 @@ func _physics_process(delta):
 				friction = true
 			if is_on_floor():
 				if Input.is_action_just_pressed("ui_up"):
-					mov.y += -velmax*10
+					mov.y += -velmax*6
 					$Salto.play()
 				if friction == true:
 					mov.x = lerp(mov.x, 0, 0.5)
@@ -113,3 +113,8 @@ func _on_Timer_timeout():
 
 func position():
 	return position.x
+
+func actualizar_vida(valor = 1):
+	if vida < 3 :
+		vida += valor
+	get_node("HUD/HUDCanvasLayer").actualizar(vida)

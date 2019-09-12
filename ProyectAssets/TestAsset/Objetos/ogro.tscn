@@ -123,6 +123,8 @@ extents = Vector2( 13.1964, 14.3314 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 position = Vector2( 0.665632, 0.0108352 )
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
