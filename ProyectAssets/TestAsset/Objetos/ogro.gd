@@ -11,7 +11,6 @@ export(int) var vel
 
 func _ready():
 	limit = get_viewport_rect().size
-	connect("golpe",self,"_recibir_golpe")
 
 func _physics_process(delta):
 	

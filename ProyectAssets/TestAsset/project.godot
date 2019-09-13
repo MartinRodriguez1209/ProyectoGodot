@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="TestTipito"
-run/main_scene="res://Niveles/testfinalboss.tscn"
+run/main_scene="res://Niveles/Main Menu.tscn"
 config/icon="res://icon.png"
 
 [display]

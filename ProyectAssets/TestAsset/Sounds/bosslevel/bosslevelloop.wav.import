@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bosslevelloop.wav-13697dafefc769865d578582116b3321.sample"
+
+[deps]
+
+source_file="res://Sounds/bosslevel/bosslevelloop.wav"
+dest_files=[ "res://.import/bosslevelloop.wav-13697dafefc769865d578582116b3321.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

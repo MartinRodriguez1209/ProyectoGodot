@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Objetos/Boss.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Dragon/PNG/sprites/idle/_0000_Layer-1.png" type="Texture" id=2]
@@ -22,14 +22,15 @@
 [ext_resource path="res://Sprites/Dragon/PNG/sprites/tail/_0005_Layer-6.png" type="Texture" id=20]
 [ext_resource path="res://Sprites/Dragon/PNG/sprites/tail/_0006_Layer-7.png" type="Texture" id=21]
 [ext_resource path="res://Sprites/Dragon/PNG/sprites/tail/_0007_Layer-8.png" type="Texture" id=22]
+[ext_resource path="res://Sounds/dragonbreath.wav" type="AudioStream" id=23]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35.2953, 15.8333 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 34.8146, 13.0054 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "ataquecola"
 length = 1.4
 tracks/0/type = "value"
@@ -81,7 +82,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "ataquefuego"
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:frame")
@@ -120,7 +121,7 @@ tracks/2/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=5]
 resource_name = "dano"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -135,7 +136,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=6]
 resource_name = "muerte"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -162,7 +163,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 37.6596, 12.6415 )
 
 [sub_resource type="RectangleShape2D" id=8]
@@ -174,7 +175,7 @@ extents = Vector2( 70.2657, 30.9118 )
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 17.7982, 30.0915 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=11]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
@@ -208,7 +209,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.51722, 2.01891 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -221,16 +222,16 @@ __meta__ = {
 
 [node name="areadano" type="CollisionShape2D" parent="area_dano"]
 position = Vector2( 0, 0.362 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/ataquecola = SubResource( 4 )
-anims/ataquefuego = SubResource( 5 )
-anims/dano = SubResource( 13 )
-anims/muerte = SubResource( 11 )
+anims/ataquecola = SubResource( 3 )
+anims/ataquefuego = SubResource( 4 )
+anims/dano = SubResource( 5 )
+anims/muerte = SubResource( 6 )
 
 [node name="area_ataque_fuego" type="Area2D" parent="."]
 position = Vector2( -56.0687, -2.04945 )
@@ -240,7 +241,7 @@ __meta__ = {
 
 [node name="collision_ataque" type="CollisionShape2D" parent="area_ataque_fuego"]
 position = Vector2( -6.90063, 6.83773 )
-shape = SubResource( 12 )
+shape = SubResource( 7 )
 disabled = true
 
 [node name="area_ataque_cola" type="Area2D" parent="."]
@@ -275,10 +276,10 @@ position = Vector2( 0.00571442, 0.128323 )
 shape = SubResource( 10 )
 
 [node name="timer_cola" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 
 [node name="timer_fuego" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 4.0
 
 [node name="timer_caminar" type="Timer" parent="."]
 wait_time = 3.0
@@ -288,10 +289,14 @@ wait_time = 2.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -22.6473, -15.5295 )
-frames = SubResource( 1 )
+frames = SubResource( 11 )
 animation = "parado"
-frame = 4
+frame = 2
 playing = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
+volume_db = -8.0
 [connection signal="body_entered" from="area_dano" to="." method="_on_area_dano_body_entered"]
 [connection signal="body_entered" from="area_ataque_fuego" to="." method="_on_area_ataque_fuego_body_entered"]
 [connection signal="body_entered" from="area_ataque_cola" to="." method="_on_area_ataque_cola_body_entered"]

@@ -50,11 +50,11 @@ func recibir_golpe(lado):
 	lado = position.x - lado
 	vida -= 1
 	if(vida == 0):
-		print("muerto")
+		$AnimationPlayer.play("muerte")
+		$AudioStreamPlayer2.play()
 		vivo = 0
-		
 	else:
-		print("Ouch!")
+		$AnimationPlayer.play("dano")
  
 
 

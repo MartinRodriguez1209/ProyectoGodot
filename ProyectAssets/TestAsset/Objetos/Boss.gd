@@ -43,10 +43,8 @@ func _process(delta):
 			mov = move_and_slide(mov,UP)
 			$deteccion_cola.get_overlapping_bodies()
 		if $deteccion_cola.get_overlapping_bodies().front() != null:
-			print("puto")
 			_on_deteccion_cola_body_entered($deteccion_cola.get_overlapping_bodies().front())
 		if $deteccion_fuego.get_overlapping_bodies().front() != null:
-			print("puto")
 			_on_deteccion_fuego_body_entered($deteccion_fuego.get_overlapping_bodies().front())
 	else:
 		pass
@@ -89,6 +87,7 @@ func _on_deteccion_fuego_body_entered(body): #Detecta si hay enemigo en el radio
 			control = 0
 			$AnimationPlayer.play("ataquefuego")
 			$AnimatedSprite.play("fuego")
+			$AudioStreamPlayer.play()
 			$timer_fuego.start()
 	else:
 		pass

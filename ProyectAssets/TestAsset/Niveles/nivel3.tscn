@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Niveles/nivel3.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/backk.png" type="Texture" id=2]
+[ext_resource path="res://Objetos/Boss.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tiles Map/nivel2.tres" type="TileSet" id=4]
+[ext_resource path="res://Jugador/caballero.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sounds/bosslevel/bosslevelintro.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/bosslevel/bosslevelloop.wav" type="AudioStream" id=7]
+
+[node name="nivel3" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Boss" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1270, 550 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 3
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 2621440, 0, 0, 2621441, 0, 0, 2621442, 0, 0, 2621443, 0, 0, 2621444, 0, 0, 2621445, 0, 0, 2621446, 0, 0, 2621447, 0, 0, 2621448, 0, 0, 2621449, 0, 0, 2621450, 0, 0, 2621451, 0, 0, 2621452, 0, 0, 2621453, 0, 0, 2621454, 0, 0, 2621455, 0, 0, 2621456, 0, 0, 2621457, 0, 0, 2621458, 0, 0, 2621459, 0, 0, 2621460, 0, 0, 2621461, 0, 0, 2621462, 0, 0, 2621463, 0, 0, 2621464, 0, 0, 2621465, 0, 0, 2621466, 0, 0, 2621467, 0, 0, 2621468, 0, 0, 2621469, 0, 0, 2621470, 0, 0, 2621471, 0, 0, 2621472, 0, 0, 2621473, 0, 0, 2621474, 0, 0, 2621475, 0, 0, 2621476, 0, 0, 2621477, 0, 0, 2621478, 0, 0, 2621479, 0, 0, 2621480, 0, 0, 2621481, 0, 0, 2621482, 0, 0, 2621483, 0, 0, 2621484, 0, 0, 2621485, 0, 0, 2621486, 0, 0, 2621487, 0, 0, 2621488, 0, 0, 2621489, 0, 0, 2621490, 0, 0, 2621491, 0, 0, 2621492, 0, 0, 2621493, 0, 0, 2621494, 0, 0, 2621495, 0, 0, 2621496, 0, 0, 2621497, 0, 0, 2621498, 0, 0, 2621499, 0, 0, 2621500, 0, 0, 2621501, 0, 0, 2621502, 0, 0, 2621503, 0, 0, 2621504, 0, 0, 2621505, 0, 0, 2621506, 0, 0, 2621507, 0, 0, 2621508, 0, 0, 2621509, 0, 0, 2621510, 0, 0, 2621511, 0, 0, 2621512, 0, 0, 2621513, 0, 0, 2621514, 0, 0, 2621515, 0, 0, 2621516, 0, 0, 2621517, 0, 0, 2621518, 0, 0, 2621519, 0, 0, 2621520, 0, 0, 2621521, 0, 0, 2621522, 0, 0, 2621523, 0, 0, 2621524, 0, 0 )
+
+[node name="Caballero" parent="." instance=ExtResource( 5 )]
+position = Vector2( 190, 550 )
+
+[node name="Camera2D" type="Camera2D" parent="Caballero"]
+current = true
+zoom = Vector2( 0.4, 0.4 )
+limit_left = 0
+limit_top = 0
+limit_right = 1366
+limit_bottom = 768
+smoothing_enabled = true
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 2359315, 0, 0, 2359316, 0, 0, 2359317, 0, 0, 2359318, 0, 0, 2359319, 0, 0, 2359320, 0, 0, 2359330, 0, 0, 2359331, 0, 0, 2359332, 0, 0, 2359333, 0, 0, 2359334, 0, 0, 2359342, 0, 0, 2359343, 0, 0, 2359344, 0, 0, 2359345, 0, 0, 2359346, 0, 0, 2359355, 0, 0, 2359356, 0, 0, 2359357, 0, 0, 2359358, 0, 0, 2359359, 0, 0, 2359360, 0, 0, 2424845, 0, 0, 2424846, 0, 0, 2424847, 0, 0, 2424848, 0, 0, 2424859, 0, 0, 2424860, 0, 0, 2424861, 0, 0, 2424862, 0, 0, 2424863, 0, 0, 2424864, 0, 0, 2424872, 0, 0, 2424873, 0, 0, 2424874, 0, 0, 2424875, 0, 0, 2424876, 0, 0, 2424885, 0, 0, 2424886, 0, 0, 2424887, 0, 0, 2424888, 0, 0, 2424889, 0, 0 )
+
+[node name="Musica_ini" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -8.0
+
+[node name="Musica_loop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -8.0
+[connection signal="finished" from="Musica_ini" to="." method="_on_Musica_ini_finished"]
+[connection signal="finished" from="Musica_loop" to="." method="_on_Musica_loop_finished"]

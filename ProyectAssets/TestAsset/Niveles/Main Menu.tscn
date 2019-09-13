@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Main Menu.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/BackMain.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/titulorecopa.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/jugar.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/jugarselec.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/salir.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/salirselec.png" type="Texture" id=7]
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 275.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 75
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_top = 75.0
+margin_right = 817.0
+margin_bottom = 400.0
+size_flags_horizontal = 4
+custom_constants/separation = 100
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+margin_right = 817.0
+margin_bottom = 92.0
+texture = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_left = 328.0
+margin_top = 192.0
+margin_right = 488.0
+margin_bottom = 325.0
+size_flags_horizontal = 4
+custom_constants/separation = 31
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_right = 160.0
+margin_bottom = 57.0
+size_flags_horizontal = 4
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_left = 8.0
+margin_top = 88.0
+margin_right = 151.0
+margin_bottom = 133.0
+size_flags_horizontal = 4
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+texture_focused = ExtResource( 7 )
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/TextureButton2" to="." method="_on_TextureButton2_pressed"]

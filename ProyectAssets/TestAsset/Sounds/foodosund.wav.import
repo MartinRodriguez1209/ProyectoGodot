@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/foodosund.wav-036d32c80682bbb5b57055e25dcb7661.sample"
+
+[deps]
+
+source_file="res://Sounds/foodosund.wav"
+dest_files=[ "res://.import/foodosund.wav-036d32c80682bbb5b57055e25dcb7661.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

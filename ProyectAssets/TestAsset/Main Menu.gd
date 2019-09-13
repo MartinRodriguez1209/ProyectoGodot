@@ -13,3 +13,13 @@ func _process(delta):
 		$MarginContainer/VBoxContainer/VBoxContainer/TextureButton.grab_focus()
 	if $MarginContainer/VBoxContainer/VBoxContainer/TextureButton2.is_hovered() == true:
 		$MarginContainer/VBoxContainer/VBoxContainer/TextureButton2.grab_focus()
+
+
+func _on_TextureButton_pressed():
+	get_tree().change_scene("res://Niveles/nivel1.tscn")
+	
+
+
+
+func _on_TextureButton2_pressed():
+	get_tree().quit()

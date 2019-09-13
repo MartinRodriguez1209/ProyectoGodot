@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/segundoinicio.wav-21ed1df3d1a586e2ae92e2500a7459bb.sample"
+
+[deps]
+
+source_file="res://Sounds/segundonivel/segundoinicio.wav"
+dest_files=[ "res://.import/segundoinicio.wav-21ed1df3d1a586e2ae92e2500a7459bb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

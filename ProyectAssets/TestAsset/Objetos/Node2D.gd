@@ -26,7 +26,6 @@ func _ready():
 	timer.connect("timeout", self, "_on_Timer_timeout")
 
 func _physics_process(delta):
-
 	if vivo == 1:
 		var friction = false
 		mov.y += 100
@@ -61,11 +60,9 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("A"):
 				disparar()
 		mov = move_and_slide(mov,UP)
-
 		if position.y > limit.y:
 			vivo=0
 			kill()
-
 	else:
 		$"Colision/Area_de_daño".disabled = true
 		mov.y = 400
@@ -107,6 +104,7 @@ func disparar():
 		bala.init(direc)
 		get_parent().add_child(bala)
 		bala.rotation = 80 * -direc
+		get_node("HUD/HUDCanvasLayer").actualizar_daga(disparos)
 
 func _on_Timer_timeout():
 	control = 1
@@ -117,4 +115,14 @@ func position():
 func actualizar_vida(valor = 1):
 	if vida < 3 :
 		vida += valor
+		$ComidaSonido.play()
 	get_node("HUD/HUDCanvasLayer").actualizar(vida)
+
+func actualizar_municion():
+	if disparos < 3:
+		disparos +=1
+		$ComidaSonido.play()
+		get_node("HUD/HUDCanvasLayer").actualizar_daga(disparos)
+
+func _on_Muerte_finished():
+	get_tree().change_scene("res://Niveles/Main Menu.tscn")
